@@ -1,0 +1,26 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+            <h4 class="mb-3 f-w-400">Signin</h4>
+            <form [formGroup]="logForm">
+              <div class="form-group mb-3">
+                <input type="email" formControlName="sUname" id="email" class="form-control" placeholder="Username">
+              </div>
+              <div class="form-group mb-4">
+                <input type="password" formControlName="sPass" id="password" class="form-control" placeholder="Password">
+              </div>
+              <button type = 'submit' (click) = 'login()' class="btn btn-block btn-primary mb-4">Signin</button>
+            </form>
+            <p class="mb-2 text-muted">Forgot password? <a routerLink='dashboard/user/reset' class="f-w-400">Reset</a></p>
+            <p class="mb-0 text-muted">Don’t have an account? <a routerLink='/signup' class="f-w-400">Signup</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

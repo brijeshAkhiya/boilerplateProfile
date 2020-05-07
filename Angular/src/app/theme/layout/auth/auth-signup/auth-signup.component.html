@@ -1,0 +1,56 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+            <h4 class="mb-3 f-w-400">Sign up</h4>
+            <form [formGroup]="regForm">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" formControlName="sFname" placeholder="Firstname">
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" formControlName="sLname" placeholder="Lastname">
+            </div>
+            <div class="input-group mb-3">
+              <input type="number" class="form-control" formControlName="nMob" placeholder="Mobile Number">
+            </div>
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" formControlName="sEmail" placeholder="Email">
+            </div>
+            <div class="col-sm-9">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" formControlName='sGender' name="sGender" id="customRadioInline1" class="custom-control-input" value="male">
+                <label class="custom-control-label" for="customRadioInline1">Male</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" formControlName='sGender' name="sGender" id="customRadioInline2" class="custom-control-input" value="female">
+                <label class="custom-control-label" for="customRadioInline2">Female</label>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" #suname formControlName="sUname" placeholder="Username">
+            </div>
+            <div class="alert alert-danger" *ngIf="!(suname.value | alphaNumericUsername) && regForm.controls.sUname.dirty">Username should have one letter one character and one Number</div>
+            <div class="input-group mb-4">
+              <input type="password" #spass formControlName="sPass" class="form-control" placeholder="Password">
+            </div>
+            <div class="alert alert-danger" *ngIf = '!(spass.value | alphaNumbericPassword) && regForm.controls.sPass.dirty'>Password must contain one Capital, one small letter and one character</div>
+            <div class="input-group mb-4">
+              <input type="password" #scnpass class="form-control" formControlName="scnPass" placeholder="Confirm Password">
+            </div>
+            <div class="alert alert-danger" *ngIf="!(spass.value | confirmPassword: scnpass.value) && regForm.controls.scnPass.dirty">Password doesn't match</div>
+            <div class="custom-control custom-checkbox text-left mb-4 mt-2">
+              <input type="checkbox" class="custom-control-input" formControlName="TAC" id="customCheck1">
+              <label for="customCheck1" class="custom-control-label">Please accept terms and conditions</label>
+            </div>
+            <button type="submit" (click) = 'submit()' class="btn btn-primary btn-block mb-4" [disabled]='regForm.invalid'>Sign up</button>
+          </form>
+            <p class="mb-2">Already have an account? <a [routerLink]="['/signin']" class="f-w-400">Signin</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
