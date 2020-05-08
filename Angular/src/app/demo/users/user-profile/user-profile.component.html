@@ -130,13 +130,14 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">User Name</label>
               <div class="col-sm-9">
-                <input type="text" [(ngModel)]="suname" formControlName='sUname' class="form-control" placeholder="UserName" value="{{item.sUname}}">
+                <input type="text" #suName [(ngModel)]="suname" formControlName='sUname' class="form-control" placeholder="UserName" value="{{item.sUname}}">
+                <div class="alert alert-danger" *ngIf="!(suName.value | alphaNumbericUsername) && editForm.controls.sUname.dirty">Username should have one letter one character and one Number</div>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label"></label>
               <div class="col-sm-9">
-                <button type="submit" [disabled] = 'editForm.invalid' (click)='update()' class="btn btn-primary">Save</button>
+                <button type="submit" [disabled] = 'editForm.invalid || !(suName.value | alphaNumbericUsername)' (click)='update()' class="btn btn-primary">Save</button>
               </div>
             </div>
           </form>

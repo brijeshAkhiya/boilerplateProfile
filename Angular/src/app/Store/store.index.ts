@@ -1,5 +1,5 @@
 // tslint:disable-next-line: max-line-length
-import { loginApi, loginApiSuccess, signupApi, signupApiSuccess, profileApi, profileApiSuccess, apiError, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess } from './store.action';
+import { loginApi, loginApiSuccess, signupApi, signupApiSuccess, profileApi, profileApiSuccess, apiError, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess, resetPasswordEmailApi, resetPasswordEmailApiSuccess, resetPasswordApi, resetPasswordApiSuccess } from './store.action';
 import { reducer } from './store.reducer';
 export const fromroot = {
   loginApi,
@@ -13,5 +13,9 @@ export const fromroot = {
   changePasswordApi,
   changePasswordApiSuccess,
   signupApi,
-  signupApiSuccess
+  signupApiSuccess,
+  resetPasswordEmailApi,
+  resetPasswordEmailApiSuccess,
+  resetPasswordApi,
+  resetPasswordApiSuccess
 };

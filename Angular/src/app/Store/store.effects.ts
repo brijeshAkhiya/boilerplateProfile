@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // tslint:disable-next-line: max-line-length
-import { loginApi, loginApiSuccess, apiError, profileApi, profileApiSuccess, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess, signupApi, signupApiSuccess } from './store.action';
+import { loginApi, loginApiSuccess, apiError, profileApi, profileApiSuccess, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess, signupApi, signupApiSuccess, resetPasswordEmailApi, resetPasswordEmailApiSuccess, resetPasswordApi, resetPasswordApiSuccess } from './store.action';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { mergeMap, catchError, map, tap } from 'rxjs/operators';
 import { AuthService } from '../theme/layout/auth/Service/auth.service';
@@ -68,7 +68,10 @@ export class storeEffects {
           localStorage.setItem('token', '');
           this.router.navigate(['auth/signin']);
         }
-        if (res.message === 'Password Incorrect') {}
+        if (res.message === 'Password Incorrect') {
+          alert(res.message);
+          location.reload();
+        }
       }),
       map(res => changePasswordApiSuccess({data: res})),
       catchError(err => of(apiError({err})))
@@ -91,6 +94,45 @@ export class storeEffects {
         }
       }),
       map((res) => signupApiSuccess({data: res})),
+      catchError((err) => of(apiError({err})))
+    ))
+    )
+  );
+  resetPasswordEffects$ = createEffect(() => this.actions$.pipe(
+    ofType(resetPasswordEmailApi),
+    mergeMap((action) => this.authService.resetPasswordLink(action).pipe(
+      tap((res: any) => {
+        if (res.message === 'Email Incorrect') {
+          alert(res.message);
+        }
+        if (res.message === 'mail not sent') {
+          alert('An error occured please try again');
+        }
+        if (res.eToken) {
+          localStorage.setItem('auth', res.eToken);
+          alert('Please check your mail');
+        }
+        console.log(res);
+      }),
+      map((res) => resetPasswordEmailApiSuccess({data: res})),
+      catchError((err) => of(apiError({err})))
+    ))
+    )
+  );
+  resetPasswordEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(resetPasswordApi),
+    mergeMap((action) => this.authService.resetPassword(action).pipe(
+      tap((res: any) => {
+        if (res.message ===  'Please try again!') {
+          alert(res.message);
+        }
+        if (res.message === 'Password Changed') {
+          alert(res.message + ' Redirecting to login');
+          localStorage.setItem('auth', '');
+          this.router.navigate(['/signin']);
+        }
+      }),
+      map((res) => resetPasswordApiSuccess({data: res})),
       catchError((err) => of(apiError({err})))
     ))
     )

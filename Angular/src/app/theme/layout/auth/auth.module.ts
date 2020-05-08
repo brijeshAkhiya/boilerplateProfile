@@ -15,14 +15,18 @@ import { AlphaNumbericPasswordPipe } from './pipes/alpha-numberic-password.pipe'
 import { ConfirmPasswordPipe } from './pipes/confirm-password.pipe';
 import { AuthSignupComponent } from './auth-signup/auth-signup.component';
 import { AlphaNumericUsernamePipe } from './pipes/alpha-numeric-username.pipe';
+import { AuthResetPasswordV2Component } from './auth-reset-password-v2/auth-reset-password-v2.component';
+import { AuthChangePasswordV2Component } from './auth-change-password-v2/auth-change-password-v2.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     AuthResetPasswordComponent,
+    AuthResetPasswordV2Component,
     AuthSigninComponent,
     AuthChangePasswordComponent,
+    AuthChangePasswordV2Component,
     AlphaNumbericPasswordPipe,
     ConfirmPasswordPipe,
     AuthSignupComponent,
@@ -39,11 +43,14 @@ import { AlphaNumericUsernamePipe } from './pipes/alpha-numeric-username.pipe';
   exports: [
     AuthComponent,
     AuthResetPasswordComponent,
+    AuthResetPasswordV2Component,
     AuthSigninComponent,
+    AuthChangePasswordV2Component,
     AuthChangePasswordComponent,
     AlphaNumbericPasswordPipe,
     ConfirmPasswordPipe,
-    AuthSignupComponent
+    AuthSignupComponent,
+    AlphaNumericUsernamePipe
   ]
 })
 export class AuthModule { }

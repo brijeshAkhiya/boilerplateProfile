@@ -18,8 +18,7 @@ const userDetails = new mongoose.Schema({
     required: true
   },
   sHobbies: {
-    type: [String],
-    required: true
+    type: [String]
   },
   sGender: {
     type: String,

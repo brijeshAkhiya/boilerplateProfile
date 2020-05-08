@@ -50,6 +50,9 @@ import { NgxsModule } from '@ngxs/store';
     StoreModule.forRoot({data: fromroot.reducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([storeEffects]),
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

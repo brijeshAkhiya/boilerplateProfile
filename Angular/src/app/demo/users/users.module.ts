@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersRoutingModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [UserProfileComponent]
 })

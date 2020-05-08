@@ -10,4 +10,9 @@ export const changePasswordApi = createAction('[Change Password] For changing pa
 export const changePasswordApiSuccess = createAction('[Change Password] After changing password', props<{data: any}>());
 export const signupApi = createAction('[Signup Api] For user signup', props<{data: any}>());
 export const signupApiSuccess = createAction('[Signup Api] After signup data handleing', props<{data: any}>());
+// tslint:disable-next-line: max-line-length
+export const resetPasswordEmailApi = createAction('[Reset Password Link] Reset password api link is sent through email', props<{data: any}>());
+export const resetPasswordEmailApiSuccess = createAction('[Reset Password Link] After the mail is sent', props<{data: any}>());
+export const resetPasswordApi = createAction('[Change Password1] For changing password', props<{data: any}>());
+export const resetPasswordApiSuccess = createAction('[Change Password1] After changing password', props<{data: any}>());
 export const apiError = createAction('[Api Error] For handleing api error', props<{err: any}>());

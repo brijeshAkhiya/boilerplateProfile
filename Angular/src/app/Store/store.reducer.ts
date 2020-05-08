@@ -1,7 +1,7 @@
 import { createReducer, State, on, Action } from '@ngrx/store';
 
 // tslint:disable-next-line: max-line-length
-import { loginApi, loginApiSuccess, profileApi, profileApiSuccess, apiError, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess, signupApi, signupApiSuccess } from './store.action';
+import { loginApi, loginApiSuccess, profileApi, profileApiSuccess, apiError, editProfileApi, editProfileApiSuccess, changePasswordApi, changePasswordApiSuccess, signupApi, signupApiSuccess, resetPasswordEmailApi, resetPasswordEmailApiSuccess, resetPasswordApi, resetPasswordApiSuccess } from './store.action';
 
 const initialState = null;
 const reducerFunction = createReducer(
@@ -16,6 +16,10 @@ const reducerFunction = createReducer(
   on(changePasswordApiSuccess, (state, action) => action.data),
   on(signupApi, (state, action) => state),
   on(signupApiSuccess, (state, action) => action.data),
+  on(resetPasswordEmailApi, (state, action) => state),
+  on(resetPasswordEmailApiSuccess, (state, action) => action.data),
+  on(resetPasswordApi, (state, action) => state),
+  on(resetPasswordApiSuccess, (state, action) => action.data),
   on(apiError, (state, action) => action.err)
 );
 

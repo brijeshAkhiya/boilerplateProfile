@@ -8,6 +8,9 @@ import { UserProfileComponent } from './demo/users/user-profile/user-profile.com
 import { LoginGuard } from './theme/layout/auth/guards/login.guard';
 import { AuthChangePasswordComponent } from './theme/layout/auth/auth-change-password/auth-change-password.component';
 import { AuthSignupComponent } from './theme/layout/auth/auth-signup/auth-signup.component';
+import { ChangepasswordGuard } from './theme/layout/auth/guards/changepassword.guard';
+import { AuthChangePasswordV2Component } from './theme/layout/auth/auth-change-password-v2/auth-change-password-v2.component';
+import { AuthResetPasswordV2Component } from './theme/layout/auth/auth-reset-password-v2/auth-reset-password-v2.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,16 @@ const routes: Routes = [
     path: 'signup',
     component: AuthSignupComponent,
     canActivate: [LoginGuard]
+  },
+  {
+    path: 'resetpassword',
+    component: AuthResetPasswordV2Component,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'changepassword/:id',
+    component: AuthChangePasswordV2Component,
+    canActivate: [ChangepasswordGuard]
   },
   {
     path: 'dashboard',

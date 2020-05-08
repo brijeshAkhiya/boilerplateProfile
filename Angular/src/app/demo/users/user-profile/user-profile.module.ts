@@ -6,9 +6,11 @@ import {SharedModule} from '../../../theme/shared/shared.module';
 import {NgbCarouselModule, NgbDropdownModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {LightboxModule} from 'ngx-lightbox';
 import { RouterModule } from '@angular/router';
+import { AlphaNumericUsernamePipe } from 'src/app/theme/layout/auth/pipes/alpha-numeric-username.pipe';
+import { AlphaNumbericUsernamePipe } from '../pipes/alpha-numberic-username.pipe';
 
 @NgModule({
-  declarations: [UserProfileComponent],
+  declarations: [UserProfileComponent, AlphaNumbericUsernamePipe],
   imports: [
     CommonModule,
     SharedModule,
@@ -16,7 +18,7 @@ import { RouterModule } from '@angular/router';
     NgbTooltipModule,
     NgbCarouselModule,
     LightboxModule,
-    RouterModule
+    RouterModule,
   ],
     exports: [UserProfileComponent]
 })
